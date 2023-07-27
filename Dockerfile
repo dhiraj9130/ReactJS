@@ -1,6 +1,7 @@
 FROM nodejs
 WORKDIR /app
-COPY ..
+COPY package*.json ./
 RUN npm install
-CMD []
-EXPOSE 
+COPY ..
+EXPOSE 8080
+CMD ["node", "server.js"]
