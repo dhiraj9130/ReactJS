@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
- name: sample-nodejs
+ name: nodejs-pipeline
  labels:
-   app: sample-nodejs
+   app: nodejs-pipeline
 spec:
  selector:
   matchLabels:
-   app: sample-nodejs
+   app: nodejs-pipeline
  template:
   metadata:
    labels:
-    app: sample-nodejs
+    app: nodejs-pipeline
   spec:
    containers:
    - image: ip_address_of_the_machine:5000/nodejs-api-image:latest
@@ -23,14 +23,14 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-    name: sample-nodejs-svc
+    name: nodejs-pipeline-svc
 spec:
     ports:
-    - name: “sample-nodejs”
+    - name: “nodejs-pipeline”
       targetPort: 8080
       port: 8080
       nodePort: 30253
       protocol: TCP
     selector:
-       app: sample-nodejs
+       app: nodejs_pipeline
     type: NodePort
